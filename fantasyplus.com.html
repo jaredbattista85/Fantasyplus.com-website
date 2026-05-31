@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy+ | Draft. Dominate. Win.</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Prompt:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BRAND COLOR PALETTE VARIABLES */
+        :root {
+            --midnight-onyx: #231F20;
+            --electric-violet: #B635FF;
+            --royal-cobalt: #4137A6;
+            --pure-white: #FFFFFF;
+            --gray-dark: #121011;
+            --gray-light: #f4f4f4;
+        }
+
+        /* GENERAL STYLES & RESET */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: var(--midnight-onyx);
+            color: var(--pure-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, .logo-text {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* LAYOUT COMPONENTS */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAVIGATION */
+        header {
+            background-color: var(--gray-dark);
+            border-bottom: 2px solid var(--royal-cobalt);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 1.8rem;
+            color: var(--pure-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .logo span {
+            color: var(--electric-violet);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--electric-violet);
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--electric-violet);
+            color: var(--pure-white);
+            box-shadow: 0 4px 15px rgba(182, 53, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #9d1ee6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(182, 53, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--pure-white);
+            border: 2px solid var(--royal-cobalt);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--royal-cobalt);
+            transform: translateY(-2px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 100px 0 60px 0;
+            background: linear-gradient(135deg, var(--midnight-onyx) 0%, #171415 100%);
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(transparent, var(--midnight-onyx));
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .tagline {
+            font-family: 'Audiowide', sans-serif;
+            color: var(--electric-violet);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero-image-mockup {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-image-mockup img {
+            max-width: 80%;
+            height: auto;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.7));
+            border-radius: 24px;
+            border: 4px solid rgba(255,255,255,0.1);
+        }
+
+        /* APP BADGES */
+        .app-badges {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .badge-link img {
+            height: 48px;
+            transition: transform 0.2s;
+        }
+
+        .badge-link:hover img {
+            transform: scale(1.05);
+        }
+
+        /* APP SCREENSHOTS CAROUSEL SECTION */
+        .screenshots-section {
+            padding: 80px 0;
+            background-color: #1a1718;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 850px;
+            margin: 40px auto 0 auto;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 20px;
+        }
+
+        .carousel-slide {
+            min-width: calc(33.333% - 14px);
+            box-sizing: border-box;
+            perspective: 1000px;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border: 3px solid rgba(255,255,255,0.08);
+            transition: transform 0.3s;
+        }
+
+        .carousel-slide img:hover {
+            transform: translateY(-5px);
+            border-color: var(--electric-violet);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(65, 55, 166, 0.8); /* Royal Cobalt with alpha */
+            color: var(--pure-white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--electric-violet);
+        }
+
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+
+        /* PARTNERSHIPS & CONTACT SECTION */
+        .partnership-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #1a1718 0%, var(--midnight-onyx) 100%);
+        }
+
+        .partnership-grid {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .partnership-content {
+            flex: 1;
+        }
+
+        .contact-form-container {
+            flex: 1;
+            background-color: #1a1718;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--royal-cobalt);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            color: var(--pure-white);
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--midnight-onyx);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: var(--pure-white);
+            font-family: 'Prompt', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--electric-violet);
+        }
+
+        select.form-control option {
+            background-color: var(--midnight-onyx);
+        }
+
+        /* INNER PAGES ARCHITECTURE (Hidden by default) */
+        .page-content {
+            display: none;
+            padding: 60px 0 100px 0;
+            min-height: 70vh;
+        }
+
+        .page-content.active-page {
+            display: block;
+        }
+
+        .page-content h1 {
+            border-bottom: 3px solid var(--electric-violet);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        .legal-box, .rules-box {
+            background-color: #1a1718;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 4px solid var(--royal-cobalt);
+        }
+
+        .legal-box h3, .rules-box h3 {
+            margin: 25px 0 10px 0;
+            color: var(--electric-violet);
+            font-size: 1.4rem;
+        }
+
+        .rules-box h4 {
+            color: var(--pure-white);
+            text-transform: uppercase;
+            margin: 15px 0 5px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .legal-box h3:first-child, .rules-box h3:first-child {
+            margin-top: 0;
+        }
+
+        .rules-list {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .rules-list li {
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .rules-list strong {
+            color: var(--electric-violet);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--gray-dark);
+            padding: 50px 0 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-info {
+            flex: 2;
+            min-width: 250px;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-links h4 {
+            color: var(--electric-violet);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--pure-white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 968px) {
+            .hero-grid, .partnership-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-image-mockup img {
+                max-width: 60%;
+            }
+            .app-badges {
+                justify-content: center;
+            }
+            .carousel-slide {
+                min-width: calc(50% - 10px);
+            }
+            .partnership-grid {
+                align-items: center;
+            }
+            .contact-form-container {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .carousel-slide {
+                min-width: 100%;
+            }
+            .hero-image-mockup img {
+                max-width: 85%;
+            }
+        }
+
+        /* STATCENTER TABLE STYLES */
+        .stats-table-container {
+            width: 100%;
+            overflow-x: auto;
+            background-color: #1a1718;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 1.05rem;
+        }
+
+        .stats-table th {
+            background-color: var(--royal-cobalt);
+            color: var(--pure-white);
+            padding: 15px 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .stats-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: middle;
+        }
+
+        .stats-table tbody tr:hover {
+            background-color: rgba(182, 53, 255, 0.05); /* Subtle Electric Violet tint */
+            transition: background-color 0.2s ease;
+        }
+
+        .rank-column {
+            color: var(--electric-violet);
+            font-weight: 700;
+        }
+
+        .points-column {
+            font-weight: 700;
+            color: var(--pure-white);
+        }
+
+        /* DYNAMIC JERSEY ICON CSS */
+        .player-identity {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .jersey-icon {
+            width: 36px;
+            height: 38px;
+            position: relative;
+            background-color: var(--electric-violet);
+            clip-path: polygon(15% 0%, 85% 0%, 100% 30%, 85% 35%, 85% 100%, 15% 100%, 15% 35%, 0% 30%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .jersey-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            font-family: 'Prompt', sans-serif;
+            margin-top: 2px;
+        }
+/* Add this to your stylesheet to give the image explicit dimensions */
+.logo img {
+    height: 32px !important; /* Forces a standard header height */
+    width: auto !important;   /* Keeps the original proportions intact */
+    display: block;          /* Removes any alignment spacing bugs */
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a onclick="navigateTo('home')" class="logo"><img src="light-logo.svg" alt="Fantasy+ Logo"></a>
+            <nav>
+                <ul>
+                    <li><a id="nav-home" onclick="navigateTo('home')" class="active">Home</a></li>
+                    <li><a id="nav-statcenter" onclick="navigateTo('statcenter')">StatCenter</a></li>
+                    <li><a id="nav-about" onclick="navigateTo('about')">About Us</a></li>
+                    <li><a id="nav-rules" onclick="navigateTo('rules')">Playbook</a></li>
+                    <li><a onclick="scrollToContact()">Partnerships</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="page-home" class="page-content active-page" style="display: block;">
+        
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="tagline">Draft. Dominate. Win.</span>
+                    <h1>Your All-in-One Fantasy Sports Command Center</h1>
+                    <p>Whether you're a seasoned commissioner or a trash-talk rookie, Fantasy+ gives you the tools to draft smarter, manage easier, and win harder. Experience real-time stats, expert insights, sleek team management, and custom league setups—all packaged inside one beautifully intuitive app.</p>
+                    <p>It's time to level up your fantasy game and leave those messy spreadsheets in the past.</p>
+                    
+                    <div class="app-badges">
+                        <a href="https://apps.apple.com/us/app/fantasy-football-leagues/id6748348548" target="_blank" class="badge-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.app.fantasyplus&hl=en-US" target="_blank" class="badge-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+                        </a>
+                    </div>
+                </div>
+          <div class="hero-image-mockup">
+    <img src="fantasy-screenshot.png.png" alt="Fantasy+ App Interface" style="max-width: 320px; height: auto; display: block; margin: 0 auto;">
+</div>
+            </div>
+        </section>
+
+        <section class="screenshots-section">
+            <div class="container">
+                <h2>Inside the Arena</h2>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto 30px auto;">Take a look at how we blend dynamic energy with tech-inspired elements to deliver the ultimate fantasy experience.</p>
+                
+                <div class="carousel-container">
+                    <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <img src="stat-center.png" alt="Draft Room Screen">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="team.png" alt="Live Matchups Screen">
+                        </div>
+<div class="carousel-slide">
+                            <img src="player-pool.png" alt="Live Matchups Screen">
+                        </div>
+<div class="carousel-slide">
+                            <img src="compare-player.png" alt="League Analytics Screen">
+                        </div>
+<div class="carousel-slide">
+                            <img src="custom-list.png" alt="League Analytics Screen">
+                        </div>
+<div class="carousel-slide">
+                            <img src="compare-team.png" alt="League Analytics Screen">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="picks.png" alt="League Analytics Screen">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="profile.png" alt="Player Market Screen">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="rankings.png" alt="Custom League Configurations Screen">
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="partnership-section" id="contact-section">
+            <div class="container partnership-grid">
+                <div class="partnership-content">
+                    <h2>Grow With Us</h2>
+                    <p>At Fantasy+, we are expanding our ecosystem and creating custom opportunities built for businesses and league leaders who command strategy and swagger.</p>
+                    <p><strong>Strategic Partnerships:</strong> Integrate your platforms, data feeds, or sports networks directly into the modern hub built for fantasy players.</p>
+                    <p><strong>Advertise on Fantasy+:</strong> Reach a highly engaged, competitive, and targeted audience directly inside our UI when dynamic game-day adrenaline runs highest.</p>
+                    <p><strong>White-Label / Custom Leagues:</strong> Looking to launch a custom enterprise-grade fantasy setup or brand league? We build tailored environments to match your needs.</p>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3 style="margin-bottom: 20px; text-transform: uppercase; color: var(--electric-violet);">Get In Touch</h3>
+                    <form id="partnershipForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="john@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Nature of Inquiry</label>
+                            <select id="interest" class="form-control" required>
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="partnership">Strategic Partnership</option>
+                                <option value="advertising">Advertise on Fantasy+</option>
+                                <option value="league">Start a Custom / Corporate League</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" rows="4" placeholder="Tell us about your team or project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="page-statcenter" class="page-content">
+        <div class="container">
+            <h1>2025 Regular Season Leaderboard</h1>
+            <p style="margin-bottom: 30px;">Final regular season player ranks evaluated by standard Fantasy+ command center scoring matrices.</p>
+            
+            <div class="stats-table-container">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">Rank</th>
+                            <th>Player</th>
+                            <th>Team</th>
+                            <th>Total Yards</th>
+                            <th>TDs</th>
+                            <th>Fantasy Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-column">#1</td>
+                            <td>
+                                <div class="player-identity">
+                                    <div class="jersey-icon" style="background-color: #AA0000; border-top: 3px solid #B3995D;">
+                                        <span class="jersey-number">23</span>
+                                    </div>
+                                    <strong>Christian McCaffrey</strong>
+                                </div>
+                            </td>
+                            <td>San Francisco 49ers</td>
+                            <td>2,126</td>
+                            <td>17</td>
+                            <td class="points-column">416.6</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-column">#2</td>
+                            <td>
+                                <div class="player-identity">
+                                    <div class="jersey-icon" style="background-color: #003594; border-top: 3px solid #FFA300;">
+                                        <span class="jersey-number">12</span>
+                                    </div>
+                                    <strong>Puka Nacua</strong>
+                                </div>
+                            </td>
+                            <td>Los Angeles Rams</td>
+                            <td>1,820</td>
+                            <td>11</td>
+                            <td class="points-column">375.0</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-column">#3</td>
+                            <td>
+                                <div class="player-identity">
+                                    <div class="jersey-icon" style="background-color: #000000; border-top: 3px solid #A71930;">
+                                        <span class="jersey-number">7</span>
+                                    </div>
+                                    <strong>Bijan Robinson</strong>
+                                </div>
+                            </td>
+                            <td>Atlanta Falcons</td>
+                            <td>2,298</td>
+                            <td>11</td>
+                            <td class="points-column">370.8</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-column">#4</td>
+                            <td>
+                                <div class="player-identity">
+                                    <div class="jersey-icon" style="background-color: #0076B6; border-top: 3px solid #B0B7BC;">
+                                        <span class="jersey-number">0</span>
+                                    </div>
+                                    <strong>Jahmyr Gibbs</strong>
+                                </div>
+                            </td>
+                            <td>Detroit Lions</td>
+                            <td>1,839</td>
+                            <td>18</td>
+                            <td class="points-column">366.9</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-column">#5</td>
+                            <td>
+                                <div class="player-identity">
+                                    <div class="jersey-icon" style="background-color: #00338d; border-top: 3px solid #c60c30;">
+                                        <span class="jersey-number">17</span>
+                                    </div>
+                                    <strong>Josh Allen</strong>
+                                </div>
+                            </td>
+                            <td>Buffalo Bills</td>
+                            <td>4,247</td>
+                            <td>39</td>
+                            <td class="points-column">362.6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+
+    <div id="page-about" class="page-content">
+        <div class="container">
+            <h1>Behind the Branding</h1>
+            <div class="legal-box">
+                <p>Fantasy+ was built for the modern fantasy player—the competitor who lives for the draft, thrives in the group chat, and plays to win.</p>
+                <p>Our brand is deeply rooted in strategy, swagger, and simplicity. We recognize that we aren’t just creating another secondary dashboard tracking standard sports numbers; we are building the ultimate tech upgrade. The "+" in Fantasy+ stands for more: more strategic insight, more executive control, and more tools to dominate your local leagues.</p>
+                <p>Visually, our ecosystem perfectly blends clean, tech-inspired design elements with bold typography and high-octane energy, mimicking the real-life adrenaline of game day alongside the tactical planning of a front-office General Manager. From our optimized user interfaces down to our direct, competitive tone of voice, every point of contact feels sharp, competitive, and incredibly fun.</p>
+                <p>Whether you're a multi-decade fantasy veteran or checking out your very first draft board, Fantasy+ promises to deliver the elite strategic edge you didn't know you were missing.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-rules" class="page-content">
+        <div class="container">
+            <h1>Fantasy+ Football: The Playbook</h1>
+            <p style="font-family: 'Audiowide', sans-serif; color: var(--electric-violet); font-size: 1.2rem; margin-bottom: 25px;">DRAFT. DOMINATE. WIN.</p>
+            
+            <div class="rules-box">
+                <p style="font-size: 1.15rem; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">Welcome to Fantasy+, your all-in-one fantasy sports command center. Leave the boring ten-man backyard setups and spreadsheets in the past. You are now the GM. This is your blueprint to absolute gridiron supremacy.</p>
+                
+                <h3>1. THE ARENA: TWO WAYS TO WIN</h3>
+                <p>We don’t do standard utility apps, and we don't do boring restrictions. Choose your battleground—or dominate both:</p>
+                <ul class="rules-list">
+                    <li><strong>The Fantasy Division (The Ultimate Roster):</strong> Draft an elite 11-player powerhouse squad every single week. No broken draft boards, no limiting salary caps—just pure performance. High score rules the week.</li>
+                    <li><strong>The Picks Division (Predictive Prowess):</strong> Lock in up to 5 "More/Less" player predictions each week. Put your football IQ to the test and watch the board light up.</li>
+                </ul>
+                <p><strong>The Big Picture:</strong> Every weekly score stacks up for a massive, season-long campaign. Go for the weekly crown or play the long game for ultimate legendary status.</p>
+
+                <h3>2. GETTING STARTED: COMMAND YOUR LEAGUE</h3>
+                <p>Ready to deploy? Setting up takes seconds:</p>
+                <ul class="rules-list">
+                    <li><strong>Launch a Private League:</strong> Challenge your friends and secure the ultimate bragging rights.</li>
+                    <li><strong>Join the Ranks:</strong> Step into public leagues to trade blows with die-hard fans who actually know ball.</li>
+                    <li><strong>The National Tournament:</strong> Take it to the grandest stage possible and compete against every single player on the app.</li>
+                </ul>
+
+                <h3>3. FANTASY DIVISION: THE 11-MAN POWERHOUSE</h3>
+                <p>Every week is a clean slate. You build your lineup exactly how you want it from our curated player pools.</p>
+                
+                <h4>Your Weekly Lineup:</h4>
+                <ul class="rules-list">
+                    <li>Quarterback (QB): 2 Slots</li>
+                    <li>Running Back (RB): 2 Slots</li>
+                    <li>Tight End (TE): 1 Slot</li>
+                    <li>Flex (FLX): 2 Slots (RB/WR/TE)</li>
+                    <li>Kicker (K): 1 Slot</li>
+                    <li>Defensive End (DE): 1 Slot</li>
+                </ul>
+
+                <h4>Absolute Roster Freedom</h4>
+                <ul class="rules-list">
+                    <li><strong>Pick Whoever, Whenever:</strong> No traditional draft restrictions holding you back. Select your weapons from the weekly position pools.</li>
+                    <li><strong>Live Edits on the Fly:</strong> Make roster adjustments right up until each individual player’s game kicks off. Real-time stats keep you sharp.</li>
+                </ul>
+
+                <h3>4. PICKS DIVISION: HIGH-STAKES PREDICTIONS</h3>
+                <p>Think you can predict the future? Prove it.</p>
+                <ul class="rules-list">
+                    <li><strong>The Play:</strong> Browse the "Team" or "Players" sections and check the projected scores.</li>
+                    <li><strong>The Call:</strong> Tap the arrows to lock in MORE or LESS for 1 to 5 players each week.</li>
+                    <li><strong>The Deadline:</strong> Lock it in before kickoff. Once the game starts, the vault is closed.</li>
+                </ul>
+
+                <h3>5. THE LEADERBOARD & THE GLORY</h3>
+                <p>Track your rise in real time with sleek, dynamic leaderboards built for individual leagues and the national stage.</p>
+                
+                <h4>Crowning the Champions</h4>
+                <ul class="rules-list">
+                    <li><strong>Weekly Contests:</strong> Highest fantasy points wins the Fantasy Division title; most correct predictions takes the Picks Division crown.</li>
+                    <li><strong>Season-Long Campaign:</strong> True dominance requires consistency. Your scores accumulate all season long to crown the undisputed Season-Long Champions.</li>
+                </ul>
+
+                <h4>The Tie-Breakers (Survival of the Fittest)</h4>
+                <p>If a battlefield ends in a draw, we break the tie using this strict order of operations:</p>
+                <ol class="rules-list" style="list-style-type: decimal;">
+                    <li>Score in the opposite division for that week.</li>
+                    <li>Season-long score for that division.</li>
+                    <li>Season-long score for the opposite division.</li>
+                    <li>Prior week's score for that division.</li>
+                    <li>Prior week's score for the opposite division.</li>
+                    <li>Current week’s highest-scoring individual player.</li>
+                    <li>Alphabetical username supremacy (pick a good name).</li>
+                </ol>
+
+                <h3>6. EXTRA INCENTIVES: THE DROPS</h3>
+                <p>The tournament organizer loves a winner. At our absolute discretion, we unleash premium prize drops to top performers and threshold-breakers.</p>
+                <ul class="rules-list">
+                    <li><strong>The Loot:</strong> Nominal rewards, sponsor discounts, subscriptions, and gift cards.</li>
+                    <li><strong>The Delivery:</strong> Boom. Sent directly via SMS text to your verified account phone number.</li>
+                </ul>
+
+                <h3>7. GM REMINDERS</h3>
+                <ul class="rules-list">
+                    <li><strong>Deadlines are Lethal:</strong> Submissions lock player-by-player as their games kick off. Don't get caught sleeping.</li>
+                    <li><strong>The Final Whistle:</strong> Winners are locked after Monday Night Football. Late stat corrections won't change history.</li>
+                    <li><strong>Stay Sharp:</strong> Check the injury reports, monitor the matchups, and play with swagger.</li>
+                </ul>
+
+                <p style="font-weight: 600; text-align: center; margin-top: 30px; color: var(--electric-violet); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px;">The gates are open. Hit the link, build your ultimate squad, and leave the spreadsheets in the past. GET IN!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-privacy" class="page-content">
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <div class="legal-box">
+            <p><strong>Fantasy Sports and Gaming Corporation &bull; Effective Date: 7/1/2025</strong></p>
+            <p style="margin-top: 15px;">Last updated: May 2026</p>
+            
+            <p>Fantasy Sports and Gaming Corporation (“Fantasy+”, “we”, “our”, “us”) owns and operates the Fantasy+ mobile application (“App”). This Privacy Policy describes how we collect, use, and share your information when you use the App.</p>
+
+            <h3 style="margin-top: 25px;">1. Introduction</h3>
+            <p>Fantasy Sports and Gaming Corporation (“Fantasy+”, “we”, “our”, “us”) owns and operates the Fantasy+ mobile application (“App”). This Privacy Policy describes how we collect, use, and share your information when you use the App.</p>
+
+            <h3 style="margin-top: 25px;">2. Data Collection</h3>
+            <p>We collect the following data to provide and maintain the Fantasy+ App:</p>
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+                <li style="margin-bottom: 8px;"><strong>Verifiable Phone Number:</strong> A verifiable phone number is required for account creation, verification, and for the distribution of prizes to winners. Access to the App is granted via a six-digit verification code sent to this phone number.</li>
+                <li style="margin-bottom: 8px;"><strong>Username:</strong> Users are required to create a username, which can be modified at any time within the App.</li>
+                <li style="margin-bottom: 8px;"><strong>Profile Information (Optional):</strong> Users may have the option to add their social media handles (e.g., X, Instagram), favorite NFL team, and home state to their profile. This information is provided voluntarily by the user.</li>
+                <li style="margin-bottom: 8px;"><strong>Non-Personal Data:</strong> We may collect non-personal data relating to user activity within the App, such as App usage data. This data is used to improve App functionality and user experience.</li>
+            </ul>
+            <p>We do not collect any other personal data unless explicitly provided by you.</p>
+
+            <h4 style="margin-top: 15px; font-weight: 600;">2.1 Children’s Privacy</h4>
+            <p>The App is not intended for children under the age of 13. In compliance with the Children’s Online Privacy Protection Act (COPPA) and other applicable laws, we do not knowingly collect personal information from children under 13. If we discover that a child under 13 has provided us with personal information without verified parental consent, we will promptly delete such information. If you believe that a child under 13 may have provided us with personal information, please contact us at <a href="mailto:support@fantasyplus.com" style="color: #B635FF; text-decoration: none;">support@fantasyplus.com</a>.</p>
+
+            <h3 style="margin-top: 25px;">3. Data Usage</h3>
+            <p>We use the data we collect for the following purposes:</p>
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+                <li style="margin-bottom: 8px;">To create, manage, and secure your user account, including verifying your phone number and providing access to the App.</li>
+                <li style="margin-bottom: 8px;">To improve and personalize your experience within the App, including optimizing features and providing relevant content.</li>
+                <li style="margin-bottom: 8px;">To communicate with you if you are a winner and to distribute prizes via SMS text message to your verifiable phone number.</li>
+                <li style="margin-bottom: 8px;">To utilize in-app data, such as leaderboards, user profiles, and drafted teams, for marketing purposes, including promoting the App and fostering user community engagement. This may include showcasing user achievements and content within the App and in external marketing materials.</li>
+                <li style="margin-bottom: 8px;">To comply with applicable laws, regulations, and legal processes, and to protect our rights and the rights of our users.</li>
+                <li style="margin-bottom: 8px;">To analyze non-personal data relating to App usage to improve App functionality and user experience.</li>
+            </ul>
+            <p><strong>In-App Advertising:</strong> We may partner directly with companies to display advertisements within the Fantasy+ App. In connection with this, we might share certain information with these partners, such as advertising identifiers, IP addresses, and aggregated usage data.</p>
+            <p>If you voluntarily provide your favorite NFL team or social media handles, this information may be used to personalize the advertisements you see within the App.</p>
+            <p><strong>Sharing of Your Information:</strong> When prizes are provided by a sponsor, we may share the phone number of the prize winner with that specific sponsor for the sole purpose of prize fulfillment (e.g., sending a discount code or subscription information via SMS). We will only share the necessary information directly related to the prize. By participating in prize-eligible contests, you consent to this potential sharing of your phone number with the sponsoring entity for prize fulfillment.</p>
+
+            <h3 style="margin-top: 25px;">4. Data Retention and Deletion</h3>
+            <p>We retain user data for as long as necessary to fulfill the purposes outlined in this Privacy Policy or as required by law. Users can delete their accounts at any time, which will result in the permanent deletion of all associated data from our servers, except where retention is required by law for legitimate business purposes.</p>
+
+            <h3 style="margin-top: 25px;">5. User Rights and Support</h3>
+            <p>You have the right to access, correct, or delete your data. If you wish to exercise any of these rights or have concerns about your account, please contact our support team at <a href="mailto:support@fantasyplus.com" style="color: #B635FF; text-decoration: none;">support@fantasyplus.com</a>. While we will make every effort to address your concerns, we cannot guarantee that all issues will be resolved to your satisfaction.</p>
+
+            <h3 style="margin-top: 25px;">6. Security Measures</h3>
+            <p>We take the security of your data seriously and implement industry-standard measures to protect it from unauthorized access, alteration, disclosure, or destruction. These measures include encryption of sensitive information, regular security assessments, and access controls to ensure that only authorized personnel can access your data. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+
+            <h3 style="margin-top: 25px;">7. Compliance with Privacy Laws</h3>
+            <p>We are committed to protecting your privacy and handling your personal information responsibly. Depending on where you live, you may have certain rights regarding your personal data, such as the ability to access, correct, or request the deletion of your information. If you wish to exercise any rights you may have concerning your data, please contact us at <a href="mailto:support@fantasyplus.com" style="color: #B635FF; text-decoration: none;">support@fantasyplus.com</a>.</p>
+
+            <h3 style="margin-top: 25px;">8. Cookies and Tracking Technologies</h3>
+            <p>We may use cookies and similar tracking technologies to enhance your experience on the App. These technologies help us understand user behavior, improve functionality, and provide targeted content. By using the App, you consent to the use of these technologies. You may adjust your device settings to manage cookies and other tracking technologies.</p>
+
+            <h3 style="margin-top: 25px;">9. Updates and Modifications</h3>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. If we make material changes, we will notify you through the App or other means before the changes take effect. Your continued use of the App after any changes indicates your acceptance of the updated Privacy Policy.</p>
+
+            <h3 style="margin-top: 25px;">10. Third-Party Services and APIs</h3>
+            <p>The App may integrate with third-party services or APIs necessary to operate the game. While we are not responsible for the data practices of these third-party services, we strive to work with partners who adhere to similar privacy standards. You are encouraged to review the privacy policies of these third-party services.</p>
+
+            <h3 style="margin-top: 25px;">11. Contact Information</h3>
+            <p>If you have any questions about this Privacy Policy or our data practices, please contact us at <a href="mailto:support@fantasyplus.com" style="color: #B635FF; text-decoration: none;">support@fantasyplus.com</a>.</p>
+        </div>
+    </div>
+</div>
+
+   <div id="page-terms" class="page-content">
+        <div class="container">
+            <h1>Terms and Conditions</h1>
+            <div class="legal-box">
+                <p><strong>Fantasy Sports and Gaming Corporation &bull; Effective Date: 7/1/2025</strong></p>
+                <p style="margin-top: 15px;">Last updated: May 2026</p>
+                
+                <p>By accessing and using the Fantasy+ app (the “Service”), operated by Fantasy Sports and Gaming Corporation, a Florida Corporation (“Fantasy+”, “we,” “us,” or “our”), you (“you,” “user,” or “player”) agree to be bound by these Terms and Conditions (“Terms”). If you do not agree with any part of these Terms, you must not use the Service. Your continued use of the Service constitutes acceptance of these Terms.</p>
+
+                <h3 style="margin-top: 25px;">1. Acceptance of Terms</h3>
+                <p>By accessing and using the Fantasy+ app (the “Service”), operated by Fantasy Sports and Gaming Corporation, a Florida Corporation (“Fantasy+”, “we,” “us,” or “our”), you (“you,” \"user,” or “player”) agree to be bound by these Terms and Conditions (“Terms”). If you do not agree with any part of these Terms, you must not use the Service. Your continued use of the Service constitutes acceptance of these Terms.</p>
+
+                <h3 style="margin-top: 25px;">2. Description of Service</h3>
+                <p>Fantasy+ provides a platform for users to participate in skill-based free-to-play fantasy football competitions, including both fantasy team management and picks divisions. The Service allows users to create and manage virtual football teams and make player stat outcome predictions, competing against other users for the bragging rights of topping the leaderboard and the opportunity to win nominal prizes based on their skill and knowledge, as outlined in the Rulebook provided in the app.</p>
+
+                <h3 style="margin-top: 25px;">3. Eligibility</h3>
+                <p>The App is not intended for use by children under the age of 13. By using the App, you represent that you are at least 13 years old and have the legal capacity to enter into these Terms. If you are under the age of 13, please do not use the App.</p>
+                
+                <h4 style="margin-top: 15px; font-weight: 600;">3.1. Compliance with COPPA and Other Laws</h4>
+                <p>Fantasy+ is committed to complying with the Children’s Online Privacy Protection Act (COPPA) and other applicable privacy laws that provide enhanced protections for children’s data. As a result, we do not knowingly collect or solicit personal information from children under 13. If we learn that we have collected personal information from a child under 13 without verification of parental consent, we will delete that information as quickly as possible. If you believe that a child under 13 may have provided us with personal information, please contact us at <a href="mailto:support@fantasyplus.com" style="color: #B635FF; text-decoration: none;">support@fantasyplus.com</a>.</p>
+                
+                <h4 style="margin-top: 15px; font-weight: 600;">3.2. Corporate and Prize Restrictions</h4>
+                <p>Employees of Fantasy Sports and Gaming Corporation and their immediate family members are eligible to play but not receive prizes. In the event an employee or their immediate family member wins a weekly or season-long contest, the prize will go to the second-place user.</p>
+
+                <h3 style="margin-top: 25px;">4. Account Registration and Security</h3>
+                <p>To use the App, you must create an account by providing a verifiable phone number. Access to the App is granted by entering a 6-digit code sent to your provided phone number. You are responsible for ensuring that the phone number you provide is accurate and up to date. You acknowledge that standard text messaging and data rates may apply when receiving codes or other communications from us.</p>
+
+                <h3 style="margin-top: 25px;">5. User Conduct</h3>
+                <p>You agree not to:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li style="margin-bottom: 8px;">Use the Service for any illegal or unauthorized purpose.</li>
+                    <li style="margin-bottom: 8px;">Impersonate any person or entity.</li>
+                    <li style="margin-bottom: 8px;">Transmit any viruses, malware, or other harmful code.</li>
+                    <li style="margin-bottom: 8px;">Interfere with or disrupt the Service or servers.</li>
+                    <li style="margin-bottom: 8px;">Attempt to gain unauthorized access to any portion of the Service.</li>
+                    <li style="margin-bottom: 8px;">Engage in any form of cheating or collusion.</li>
+                    <li style="margin-bottom: 8px;">Post or transmit any content that is offensive, discriminatory, or violates the rights of others.</li>
+                    <li style="margin-bottom: 8px;">Use any automated system, including “bots,” “spiders,” or “offline readers,” to access the Service.</li>
+                    <li style="margin-bottom: 8px;">Attempt to manipulate contest results or scores.</li>
+                </ul>
+
+                <h3 style="margin-top: 25px;">6. Contests and Prizes</h3>
+                <p>The Service offers free-to-play fantasy football competitions. Our free-to-play contests feature weekly, and season-long leaderboard rankings determined by the specific rules within the app. We may award nominal prizes as outlined in the rulebook and at our sole discretion. Fantasy Sports and Gaming Corporation has the right to modify or cancel contests at any time.</p>
+                <p>The Fantasy+ App may offer weekly and season-long prizes to the winners of our skill-based fantasy team management and picks divisions, subject to the specific rules and eligibility criteria outlined in our separate Rulebook, which is incorporated into these Terms by reference. Participation in these contests is free; no purchase, entry fee, or other form of consideration is required to be eligible for prizes.</p>
+                <p>By participating in the Fantasy+ competitions, users acknowledge and agree that the outcomes are determined by the application of skill, knowledge of football, and strategic decision-making, not by chance. Winners are determined according to the rules of each competition as detailed in the Rulebook. By participating in these contests, you agree to abide by these rules.</p>
+                <p>Prizes will be nominal in value and may include, but are not limited to, discounts to sponsor stores, discounted subscriptions to sponsor services, or gift cards. Prizes will typically be communicated and distributed via SMS text message to the verifiable phone number used to create your account.</p>
+                <p>Fantasy+ reserves the right to modify or discontinue the offering of prizes at any time, with or without notice, and the specific prizes awarded are subject to change. Eligibility for prizes may be subject to additional requirements as outlined in the Rulebook. Fantasy+ is not responsible for any issues related to the redemption or use of prizes provided by sponsors.</p>
+
+                <h3 style="margin-top: 25px;">7. Payment and Refunds</h3>
+                <p>The Service is free to play, and there are no entry fees. There are no refunds.</p>
+
+                <h3 style="margin-top: 25px;">8. Intellectual Property</h3>
+                <p>All content, features, and functionality on the App, including but not limited to text, graphics, logos, icons, images, audio clips, video clips, digital downloads, data compilations, and software, are the exclusive property of Fantasy Sports and Gaming Corporation or its licensors and are protected by intellectual property laws.</p>
+                
+                <h4 style="margin-top: 15px; font-weight: 600;">8.1. Licensed Content</h4>
+                <p>The App may include content that is licensed from third parties, including but not limited to NFL logos, team names, and player images (“Licensed Content”). This Licensed Content is the intellectual property of the respective third-party owners and is used by Fantasy Sports and Gaming Corporation under license. You acknowledge that you do not acquire any ownership rights in the Licensed Content by using the App.</p>
+                
+                <h4 style="margin-top: 15px; font-weight: 600;">8.2. User Restrictions</h4>
+                <p>You are granted a limited, non-exclusive, non-transferable license to access and use the App and the content provided therein for your personal, non-commercial use only. You agree not to copy, reproduce, distribute, modify, create derivative works from, publicly display, or commercially exploit any content from the App, including the Licensed Content, without the express prior written consent of Fantasy Sports and Gaming Corporation or the respective third-party owner.</p>
+                
+                <h4 style="margin-top: 15px; font-weight: 600;">8.3. Trademarks</h4>
+                <p>All trademarks, service marks, logos, and trade names appearing on the App, whether registered or unregistered, are the property of Fantasy Sports and Gaming Corporation or their respective owners. The use of any of these marks without the prior written consent of Fantasy Sports and Gaming Corporation or the respective owners is strictly prohibited.</p>
+
+                <h3 style="margin-top: 25px;">9. Disclaimer of Warranties</h3>
+                <p>The Service is provided “as is” and “as available” without warranties of any kind, express or implied. We do not warrant that the Service will be uninterrupted, error-free, or secure. We do not warrant the accuracy or reliability of any content or information provided on the Service. We are not responsible for any errors or omissions in the scoring or statistics used in contests.</p>
+
+                <h3 style="margin-top: 25px;">10. Limitation of Liability</h3>
+                <p>In no event shall Fantasy Sports and Gaming Corporation be liable for any direct, indirect, incidental, special, or consequential damages arising out of or in connection with your use of the Service. Our total liability to you for any claim arising out of or relating to these Terms or the Service shall be $0.</p>
+
+                <h3 style="margin-top: 25px;">11. Indemnification</h3>
+                <p>You agree to indemnify, defend, and hold harmless Fantasy Sports and Gaming Corporation and its affiliates, officers, directors, employees, and agents from any claims, liabilities, damages, and expenses (including attorneys’ fees) arising out of or in connection with your use of the Service or your breach of these Terms.</p>
+
+                <h3 style="margin-top: 25px;">12. Changes to Terms</h3>
+                <p>We reserve the right to modify these Terms at any time. We will notify you of any changes by posting the updated Terms on the Service or by other means. Your continued use of the Service after the changes constitute your acceptance of the updated Terms.</p>
+
+                <h3 style="margin-top: 25px;">13. Governing Law and Dispute Resolution</h3>
+                <p>These Terms shall be governed by and construed in accordance with the laws of the State of Florida, without regard to its conflict of law provisions. Any legal disputes arising out of or in connection with these Terms shall be resolved exclusively in the state or federal courts located in Florida.</p>
+
+                <h3 style="margin-top: 25px;">14. Termination</h3>
+                <p>You may delete your account at any time through the App’s settings. Upon deletion, all user data will be permanently removed from our servers, except as required by law. Fantasy Sports and Gaming Corporation reserves the right to update, manipulate, suspend, or terminate any account at any time, for any reason, without notice. Upon termination, your rights to use the App will immediately cease.</p>
+
+                <h3 style="margin-top: 25px;">15. Third-Party Services and APIs</h3>
+                <p>The App may integrate with third-party services or APIs necessary to operate the game. Fantasy Sports and Gaming Corporation is not responsible for the content, accuracy, or performance of third-party services. Your use of third-party services is governed by the terms and conditions of the respective third-party providers.</p>
+
+                <h3 style="margin-top: 25px;">16. Contact Information</h3>
+                <p>If you have any questions about these Terms, please contact us at <a href="mailto:support@fantasyplus.com" style="color: #B635FF; text-decoration: none;">support@fantasyplus.com</a>.</p>
+
+                <h3 style="margin-top: 25px;">17. Specific Sport Rules</h3>
+                <p>The specific rules and scoring for Fantasy Football will be available within the app.</p>
+
+                <h3 style="margin-top: 25px;">18. Advertising and Promotions</h3>
+                <p>The Service may display advertisements and promotional materials from sponsors and advertisers. By using the Fantasy+ App, you acknowledge and agree that you may be exposed to such advertising. We are not responsible for the content, accuracy, or legality of any third-party advertisements or websites linked within the Service. We reserve the right to modify the types and placement of advertisements within the App at our discretion. Where applicable, information regarding any available opt-out options for advertising will be provided within the App or these Terms. Any promotions offered by Fantasy+ will be subject to their own set of specific terms and conditions, that will be made available when the promotion is offered.</p>
+            </div>
+        </div>
+</div>
+
+    <footer style="background-color: #121011; padding: 60px 0 30px 0; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem;">
+        <div class="container" style="display: flex; flex-direction: column; gap: 40px;">
+            
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+                
+               <div style="flex: 1.5; min-width: 280px; max-width: 450px;">
+    <img src="light-logo.svg" alt="Fantasy+ Logo" style="height: 32px; width: auto; display: block; margin-bottom: 15px;">
+    
+    <p style="color: rgba(255,255,255,0.6); font-weight: 300; font-size: 1rem; line-height: 1.6;">
+                        The premium, all-in-one sports management command hub designed to let you rule your arena with flawless clarity, ultimate strategy, and unparalleled swagger.
+                    </p>
+                </div>
+
+                <div class="footer-links" style="min-width: 140px;">
+                    <h4 style="color: var(--electric-violet); text-transform: uppercase; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 20px;">Platform</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a onclick="navigateTo('home')" style="color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: color 0.2s;">Home Dashboard</a></li>
+                        <li><a onclick="navigateTo('statcenter')" style="color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: color 0.2s;">StatCenter</a></li>
+                        <li><a onclick="navigateTo('about')" style="color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: color 0.2s;">About Us</a></li>
+                        <li><a onclick="navigateTo('rules')" style="color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: color 0.2s;">Game Rulebook</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links" style="min-width: 140px;">
+                    <h4 style="color: var(--electric-violet); text-transform: uppercase; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 20px;">Legal Documentation</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a onclick="navigateTo('privacy')" style="color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: color 0.2s;">Privacy Policy</a></li>
+                        <li><a onclick="navigateTo('terms')" style="color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: color 0.2s;">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; color: rgba(255,255,255,0.4); font-size: 0.85rem; font-weight: 300;">
+                <div>&copy; 2026 Fantasy Sports and Gaming Corporation. All rights reserved.</div>
+                <div style="font-family: 'Audiowide', sans-serif; color: rgba(255,255,255,0.25); letter-spacing: 0.5px; font-size: 0.8rem;">DRAFT. DOMINATE. WIN.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FIXED NAVIGATION HANDLER
+        function navigateTo(pageId) {
+            // 1. Hide every single page block on the site
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                page.classList.remove('active-page');
+                page.style.display = 'none'; // Force hides it completely
+            });
+            
+            // 2. Find the exact page container clicked and make it visible
+            const targetPage = document.getElementById('page-' + pageId);
+            if(targetPage) {
+                targetPage.classList.add('active-page');
+                targetPage.style.display = 'block'; // Force reveals it completely
+            }
+            
+            // 3. Reset all header navigation link highlights
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // 4. Highlight the current active tab
+            const activeNav = document.getElementById('nav-' + pageId);
+            if(activeNav) {
+                activeNav.classList.add('active');
+            }
+            
+            // 5. Scroll smoothly back to the top of the new page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToContact() {
+            // Ensure user is back on home page to interact with form
+            navigateTo('home');
+            setTimeout(() => {
+                const contactSection = document.getElementById('contact-section');
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        // CAROUSEL FUNCTIONALITY
+        let currentSlideIndex = 0;
+        
+        function moveCarousel(direction) {
+            const track = document.getElementById('carouselTrack');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+            
+            // Calculate visible slides depending on client browser viewport width
+            let visibleSlides = 3;
+            if (window.innerWidth <= 576) {
+                visibleSlides = 1;
+            } else if (window.innerWidth <= 968) {
+                visibleSlides = 2;
+            }
+            
+            const maxIndex = totalSlides - visibleSlides;
+            
+            currentSlideIndex += direction;
+            
+            // Keep index within healthy limits
+            if (currentSlideIndex < 0) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex > maxIndex) {
+                currentSlideIndex = maxIndex;
+            }
+            
+            // Calculate precise movement spacing percentage
+            const slideWidth = slides[0].getBoundingClientRect().width + 20; // width + gap
+            track.style.transform = `translateX(-${currentSlideIndex * slideWidth}px)`;
+        }
+        
+        // Ensure carousel recalibrates sizes smoothly during browser window resizes
+        window.addEventListener('resize', () => {
+            document.getElementById('carouselTrack').style.transform = 'translateX(0px)';
+            currentSlideIndex = 0;
+        });
+
+        // FORM SUBMISSION FEEDBACK
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert("Thank you for your entry! The Fantasy+ strategic team will review your partnership profile and reach out within 48 business hours.");
+            document.getElementById('partnershipForm').reset();
+        }
+    </script>
+</body>
+</html>
