@@ -590,6 +590,51 @@
     width: auto !important;   /* Keeps the original proportions intact */
     display: block;          /* Removes any alignment spacing bugs */
 }
+/* --- MOBILE LAYOUT OVERRIDES (Screens smaller than 768px) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Prevent Horizontal Scrolling */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* 2. Stack Grid Elements Vertically */
+    /* If you have columns sitting side-by-side that squash on mobile, this stacks them */
+    .hero-container, .features-grid, .stats-row, .form-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* 3. Scale Down Oversized Headings */
+    h1 {
+        font-size: 2rem !important; /* Shrinks huge hero text so it doesn't break into 4 lines */
+        line-height: 1.2;
+    }
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    /* 4. Fix Padding and Margins */
+    /* Desktop sections usually have massive padding that crushes content on small screens */
+    section {
+        padding: 40px 20px !important; 
+    }
+
+    /* 5. Make Images and Containers Fluid */
+    img, .card, .form-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* 6. Fix Form Inputs */
+    .form-group input, .form-group select, .form-group textarea {
+        font-size: 16px !important; /* Prevents iOS Safari from annoying zooming-in when tapping fields */
+    }
+}
     </style>
 </head>
 <body>
