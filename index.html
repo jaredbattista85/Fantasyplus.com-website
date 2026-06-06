@@ -590,61 +590,6 @@
     width: auto !important;   /* Keeps the original proportions intact */
     display: block;          /* Removes any alignment spacing bugs */
 }
-/* --- UNIVERSAL MOBILE LAYOUT OVERRIDES (Below 768px) --- */
-@media (max-width: 768px) {
-    
-    /* 1. Kill all accidental horizontal scrolling */
-    html, body {
-        overflow-x: hidden !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* 2. FORCE every layout row/grid on the page to stack into a clean column */
-    div, section, header, footer {
-        /* If something is using standard flex or grid, force it to stack vertically */
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-    }
-
-    /* 3. Strip hardcoded pixel widths that crush mobile screens */
-    div, section, img, iframe, table, form, .card {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        box-sizing: border-box !important;
-        float: none !important; /* Prevents text layouts from overlapping images */
-    }
-
-    /* 4. Fix typography so it doesn't overflow the borders */
-    h1 {
-        font-size: 1.85rem !important;
-        line-height: 1.2 !important;
-        letter-spacing: normal !important;
-    }
-    h2 {
-        font-size: 1.5rem !important;
-    }
-    h3, p, span, li, a {
-        font-size: 1rem !important;
-    }
-
-    /* 5. Tighten up massive desktop spacing */
-    section {
-        padding: 30px 15px !important;
-        margin: 0 !important;
-    }
-
-    /* 6. Clean up form elements and inputs */
-    form input, form select, form textarea, form button {
-        width: 100% !important;
-        margin: 8px 0 !important;
-        font-size: 16px !important; /* Prevents auto-zooming on iPhone Safari */
-    }
-}
     </style>
 </head>
 <body>
