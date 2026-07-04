@@ -471,125 +471,199 @@
             gap: 15px;
             color: rgba(255,255,255,0.5);
         }
-
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 968px) {
-            .hero-grid, .partnership-grid {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-image-mockup img {
-                max-width: 60%;
-            }
-            .app-badges {
-                justify-content: center;
-            }
-            .carousel-slide {
-                min-width: calc(50% - 10px);
-            }
-            .partnership-grid {
-                align-items: center;
-            }
-            .contact-form-container {
-                width: 100%;
-            }
+/* ==========================================================================
+           STATCENTER ADVANCED DYNAMIC LAYOUT MODIFICATIONS (FIXED)
+           ========================================================================== */
+        
+        /* 1) Center-aligned Title and Longer Custom Underline Tracking */
+        #page-statcenter {
+            text-align: center;
+        }
+       #page-statcenter h1 {
+            font-family: 'Audiowide', sans-serif; /* Changes title font to Audiowide */
+            padding-bottom: 5px;
+            margin: 0 auto 10px auto;
+            display: block; 
+            max-width: 600px;
+            letter-spacing: 2px; /* Gives the text that sharp, tracking look */
+        }
+        #page-statcenter .tagline {
+            display: block;
+            margin-bottom: 40px;
+            text-align: center;
         }
 
-        @media (max-width: 576px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.8rem; }
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .carousel-slide {
-                min-width: 100%;
-            }
-            .hero-image-mockup img {
-                max-width: 85%;
-            }
-        }
-
-        /* STATCENTER TABLE STYLES */
-        .stats-table-container {
-            width: 100%;
-            overflow-x: auto;
-            background-color: #1a1718;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .stats-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 1.05rem;
-        }
-
-        .stats-table th {
-            background-color: var(--royal-cobalt);
-            color: var(--pure-white);
-            padding: 15px 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        .stats-table td {
-            padding: 15px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            vertical-align: middle;
-        }
-
-        .stats-table tbody tr:hover {
-            background-color: rgba(182, 53, 255, 0.05); /* Subtle Electric Violet tint */
-            transition: background-color 0.2s ease;
-        }
-
-        .rank-column {
-            color: var(--electric-violet);
-            font-weight: 700;
-        }
-
-        .points-column {
-            font-weight: 700;
-            color: var(--pure-white);
-        }
-
-        /* DYNAMIC JERSEY ICON CSS */
-        .player-identity {
+        /* 4) Stack layout so Search Bar and Card Slot sit cleanly above the list grid */
+        .statcenter-layout {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+            max-width: 850px; /* Perfectly bounds the layout width to look sharp when stacked */
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .jersey-icon {
-            width: 36px;
-            height: 38px;
-            position: relative;
-            background-color: var(--electric-violet);
-            clip-path: polygon(15% 0%, 85% 0%, 100% 30%, 85% 35%, 85% 100%, 15% 100%, 15% 35%, 0% 30%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+        /* Search Input Box Frame */
+        .utility-sidebar {
+            width: 100%;
         }
-
-        .jersey-number {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #fff;
+        .search-box { position: relative; margin-bottom: 15px; text-align: left; }
+        #player-search { 
+            width: 100%; 
+            padding: 15px 20px; 
+            background: #1a1718; 
+            border: 2px solid var(--royal-cobalt); 
+            border-radius: 8px; 
+            color: var(--pure-white); 
+            font-size: 16px;
+            box-sizing: border-box;
             font-family: 'Prompt', sans-serif;
-            margin-top: 2px;
+            transition: all 0.3s ease;
         }
-/* Add this to your stylesheet to give the image explicit dimensions */
-.logo img {
-    height: 32px !important; /* Forces a standard header height */
-    width: auto !important;   /* Keeps the original proportions intact */
-    display: block;          /* Removes any alignment spacing bugs */
-}
+        #player-search:focus { 
+            outline: none; 
+            border-color: var(--electric-violet); 
+            box-shadow: 0 0 15px rgba(182, 53, 255, 0.2);
+        }
+
+        /* Live Dropdown Results Box */
+        .search-results-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #1a1718;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 250px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            text-align: left;
+        }
+        .search-row {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .search-row:hover { background: #2d292a; }
+        .search-row .player-name-search { font-weight: 600; color: var(--pure-white); }
+        .search-row .player-pos-badge { font-size: 11px; color: #888; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 3px; margin-right: 10px; }
+
+        /* Populated Interactive Card Profile Blueprint */
+        .player-card {
+            background: linear-gradient(135deg, #1a1718 0%, #121011 100%);
+            border: 2px solid var(--electric-violet);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            animation: slideDown 0.3s ease-out;
+            text-align: left;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px; }
+        .card-header h3 { font-family: 'Audiowide', sans-serif; font-size: 22px; margin: 0; letter-spacing: 1px; color: var(--pure-white); }
+        .stats-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; }
+        .stat-mini-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(65, 55, 166, 0.4); border-radius: 8px; padding: 12px; text-align: center; }
+        .sm-label { font-size: 10px; text-transform: uppercase; color: #888; letter-spacing: 0.5px; display: block; margin-bottom: 5px; }
+        .sm-val { font-size: 18px; font-weight: 700; color: var(--electric-violet); }
+
+        /* Quadrant Main Frame Box */
+        .quadrant-card { 
+            background: #1a1718; 
+            border-radius: 12px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            width: 100%;
+        }
+        .quadrant-header { 
+            background: #2d292a; 
+            padding: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .quadrant-header h2 { 
+            margin: 0; 
+            font-family: 'Audiowide', sans-serif; 
+            font-size: 18px; 
+            letter-spacing: 1px;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .badge-live { 
+            background: var(--electric-violet); 
+            color: var(--pure-white); 
+            padding: 4px 10px; 
+            font-size: 11px; 
+            font-weight: 700; 
+            border-radius: 4px; 
+        }
+
+        /* Metric Buttons Slider Track Row */
+        .filter-slider { 
+            display: flex; 
+            gap: 10px; 
+            padding: 15px 20px; 
+            background: #151314;
+            overflow-x: auto;
+        }
+        .tab-btn { 
+            background: transparent; 
+            border: 1px solid var(--royal-cobalt); 
+            color: var(--pure-white); 
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            white-space: nowrap;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover { background: rgba(65, 55, 166, 0.3); }
+        .tab-btn.active { 
+            background: var(--electric-violet); 
+            border-color: var(--electric-violet); 
+        }
+
+        /* Leaderboard Data Elements & Custom Visual Requirements */
+        .leaderboard-wrapper { padding: 10px 20px; overflow-x: auto; text-align: left; }
+        .sc-table { width: 100%; border-collapse: collapse; text-align: left;}
+        .sc-table th { 
+            padding: 12px; 
+            color: #888; 
+            font-size: 12px; 
+            text-transform: uppercase; 
+            border-bottom: 2px solid #2d292a;
+            font-weight: 600;
+        }
+        .sc-table td { padding: 14px 12px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 15px; }
+        .sc-table tr:hover td { background: rgba(255,255,255,0.02); }
+        
+        /* 2) Color Theme Overrides: Purple Rank, White Stats, Royal Blue Boxes */
+        .rank-num { font-weight: 700; color: var(--electric-violet) !important; } 
+        .player-name { font-weight: 600; color: var(--pure-white); }
+        .team-badge { background: var(--royal-cobalt) !important; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; color: #fff; display: inline-block; } 
+        .stat-val { font-weight: 700; text-align: right; color: var(--pure-white) !important; } 
+        .loading-text { text-align: center; color: #888; padding: 20px 0; }
+
+        .quadrant-footer { background: #2d292a; padding: 15px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        .cta-link { color: var(--electric-violet); text-decoration: none; font-size: 13px; font-weight: 600; transition: opacity 0.2s; }
+        .cta-link:hover { text-decoration: underline; opacity: 0.9; }
+
     </style>
 </head>
 <body>
@@ -719,106 +793,56 @@
         </section>
     </div>
 
-    <div id="page-statcenter" class="page-content">
+<div id="page-statcenter" class="page-content">
         <div class="container">
-            <h1>2025 Regular Season Leaderboard</h1>
-            <p style="margin-bottom: 30px;">Final regular season player ranks evaluated by standard Fantasy+ command center scoring matrices.</p>
+            <h1>STATCENTER</h1>
+            <span class="tagline">Draft. Dominate. Win.</span>
             
-            <div class="stats-table-container">
-                <table class="stats-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 80px;">Rank</th>
-                            <th>Player</th>
-                            <th>Team</th>
-                            <th>Total Yards</th>
-                            <th>TDs</th>
-                            <th>Fantasy Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="rank-column">#1</td>
-                            <td>
-                                <div class="player-identity">
-                                    <div class="jersey-icon" style="background-color: #AA0000; border-top: 3px solid #B3995D;">
-                                        <span class="jersey-number">23</span>
-                                    </div>
-                                    <strong>Christian McCaffrey</strong>
-                                </div>
-                            </td>
-                            <td>San Francisco 49ers</td>
-                            <td>2,126</td>
-                            <td>17</td>
-                            <td class="points-column">416.6</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-column">#2</td>
-                            <td>
-                                <div class="player-identity">
-                                    <div class="jersey-icon" style="background-color: #003594; border-top: 3px solid #FFA300;">
-                                        <span class="jersey-number">12</span>
-                                    </div>
-                                    <strong>Puka Nacua</strong>
-                                </div>
-                            </td>
-                            <td>Los Angeles Rams</td>
-                            <td>1,820</td>
-                            <td>11</td>
-                            <td class="points-column">375.0</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-column">#3</td>
-                            <td>
-                                <div class="player-identity">
-                                    <div class="jersey-icon" style="background-color: #000000; border-top: 3px solid #A71930;">
-                                        <span class="jersey-number">7</span>
-                                    </div>
-                                    <strong>Bijan Robinson</strong>
-                                </div>
-                            </td>
-                            <td>Atlanta Falcons</td>
-                            <td>2,298</td>
-                            <td>11</td>
-                            <td class="points-column">370.8</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-column">#4</td>
-                            <td>
-                                <div class="player-identity">
-                                    <div class="jersey-icon" style="background-color: #0076B6; border-top: 3px solid #B0B7BC;">
-                                        <span class="jersey-number">0</span>
-                                    </div>
-                                    <strong>Jahmyr Gibbs</strong>
-                                </div>
-                            </td>
-                            <td>Detroit Lions</td>
-                            <td>1,839</td>
-                            <td>18</td>
-                            <td class="points-column">366.9</td>
-                        </tr>
-                        <tr>
-                            <td class="rank-column">#5</td>
-                            <td>
-                                <div class="player-identity">
-                                    <div class="jersey-icon" style="background-color: #00338d; border-top: 3px solid #c60c30;">
-                                        <span class="jersey-number">17</span>
-                                    </div>
-                                    <strong>Josh Allen</strong>
-                                </div>
-                            </td>
-                            <td>Buffalo Bills</td>
-                            <td>4,247</td>
-                            <td>39</td>
-                            <td class="points-column">362.6</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="statcenter-layout">
+                <div class="utility-sidebar">
+                    <div class="search-box">
+                        <input type="text" id="player-search" placeholder="Search player (e.g., Joe Burrow)..." onkeyup="handleSearch()">
+                        <div id="search-results" class="search-results-dropdown"></div>
+                    </div>
+                    <div id="player-card-slot"></div>
+                </div>
+
+                <div class="quadrant-card">
+                    <div class="quadrant-header">
+                        <h2>2025 TOP 10 OFFENSE LEADERS</h2>
+                        <span class="badge-live">PREVIEW</span>
+                    </div>
+                    
+                    <div class="filter-slider">
+                        <button class="tab-btn active" onclick="switchMetric('passing', this)">Passing Yards</button>
+                        <button class="tab-btn" onclick="switchMetric('rushing', this)">Rushing Yards</button>
+                        <button class="tab-btn" onclick="switchMetric('receiving', this)">Receiving Yards</button>
+                        <button class="tab-btn" onclick="switchMetric('touchdowns', this)">Total TDs</button>
+                    </div>
+
+                    <div class="leaderboard-wrapper">
+                        <table class="sc-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%">Rank</th>
+                                    <th style="width: 50%">Player</th>
+                                    <th style="width: 20%">Team</th>
+                                    <th style="width: 20%; text-align: right;" id="metric-header">Yards</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-rows">
+                                <tr><td colspan="4" class="loading-text">Connecting to real-time sports network...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="quadrant-footer">
+                        <a href="https://apps.apple.com/us/app/fantasy-football-leagues/id6748348548" target="_blank" class="cta-link">Unlock Custom Lists & Team Comparisons in the App →</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>    
-
-    <div id="page-about" class="page-content">
+    </div><div id="page-about" class="page-content">
         <div class="container">
             <h1>Behind the Branding</h1>
             <div class="legal-box">
@@ -1151,6 +1175,11 @@
             
             // 5. Scroll smoothly back to the top of the new page
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // NEW HOOK: Fires live sports API network data feeds ONLY when clicking StatCenter
+            if (pageId === 'statcenter' && typeof cachedPlayers !== 'undefined' && cachedPlayers.length === 0) {
+                loadStatCenterPreview();
+            }
         }
 
         function scrollToContact() {
@@ -1225,6 +1254,273 @@
         alert("Connection error. Please check your internet and try again.");
     });
 }
+      // ==========================================================================
+        //           STATCENTER LIVE NETWORK CORE PROGRAM CODE
+        // ==========================================================================
+        let cachedPlayers = [];
+        let currentMetric = 'passing';
+
+        // Secure endpoint processing through verified CORS middleware
+        const testUrl = "https://fantasy-plus.jared-battista.workers.dev/v2.1/pull/nfl/2025-2026-regular/player_stats_totals.json";
+
+        async function loadStatCenterPreview() {
+            const tableBody = document.getElementById('leaderboard-rows');
+                        
+            try {
+                const res = await fetch(testUrl);
+
+                if(!res.ok) throw new Error();
+                const data = await res.json();
+                
+                const wrapperKey = Object.keys(data).find(k => Array.isArray(data[k])) || 'playerStatsTotals';
+                cachedPlayers = data[wrapperKey] || [];
+                
+                renderLeaderboard();
+            } catch(e) {
+                tableBody.innerHTML = `<tr><td colspan="4" style="color:#ff4444; text-align:center; padding:20px 0;">Proxy authorization channel timed out. Please activate your temporary Heroku demo proxy session link to sync stats natively.</td></tr>`;
+            }
+        }
+
+        function renderLeaderboard() {
+            const tableBody = document.getElementById('leaderboard-rows');
+            if(!tableBody) return;
+            tableBody.innerHTML = "";
+            
+            let sorted = [];
+            
+            if (currentMetric === 'passing') {
+                document.getElementById('metric-header').innerText = "Yds";
+                sorted = cachedPlayers.filter(p => p.stats?.passing?.passYards)
+                                       .sort((a,b) => b.stats.passing.passYards - a.stats.passing.passYards);
+            } else if (currentMetric === 'rushing') {
+                document.getElementById('metric-header').innerText = "Yds";
+                sorted = cachedPlayers.filter(p => p.stats?.rushing?.rushYards)
+                                       .sort((a,b) => b.stats.rushing.rushYards - a.stats.rushing.rushYards);
+            } else if (currentMetric === 'receiving') {
+                document.getElementById('metric-header').innerText = "Yds";
+                sorted = cachedPlayers.filter(p => p.stats?.receiving?.recYards)
+                                       .sort((a,b) => b.stats.receiving.recYards - a.stats.receiving.recYards);
+            } else if (currentMetric === 'touchdowns') {
+                document.getElementById('metric-header').innerText = "TDs";
+                sorted = cachedPlayers.filter(p => ((p.stats?.passing?.passTD || 0) + (p.stats?.rushing?.rushTD || 0) + (p.stats?.receiving?.recTD || 0)) > 0)
+                                       .sort((a,b) => {
+                                           let totalA = (a.stats.passing?.passTD || 0) + (a.stats.rushing?.rushTD || 0) + (a.stats.receiving?.recTD || 0);
+                                           let totalB = (b.stats.passing?.passTD || 0) + (b.stats.rushing?.rushTD || 0) + (b.stats.receiving?.recTD || 0);
+                                           return totalB - totalA;
+                                       });
+            }
+
+            if(sorted.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#888;">No historical matrix matches found.</td></tr>`;
+                return;
+            }
+
+            sorted.slice(0, 10).forEach((entry, i) => {
+                let val = 0;
+                if (currentMetric === 'passing') val = entry.stats.passing.passYards;
+                if (currentMetric === 'rushing') val = entry.stats.rushing.rushYards;
+                if (currentMetric === 'receiving') val = entry.stats.receiving.recYards;
+                if (currentMetric === 'touchdowns') val = (entry.stats.passing?.passTD || 0) + (entry.stats.rushing?.rushTD || 0) + (entry.stats.receiving?.recTD || 0);
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="rank-num">#${i+1}</td>
+                    <td class="player-name" style="cursor:pointer;" onclick="selectPlayerDirectly('${entry.player.id}')">${entry.player.firstName} ${entry.player.lastName}</td>
+                    <td><span class="team-badge">${entry.player.currentTeam?.abbreviation || 'N/A'}</span></td>
+                    <td class="stat-val">${val.toLocaleString()}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        function switchMetric(metric, element) {
+            currentMetric = metric;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            renderLeaderboard();
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('player-search').value.toLowerCase().trim();
+            const dropdown = document.getElementById('search-results');
+            dropdown.innerHTML = "";
+
+            if (query.length < 2) {
+                dropdown.style.display = "none";
+                return;
+            }
+
+            const matches = cachedPlayers.filter(p => {
+                const fullName = `${p.player.firstName} ${p.player.lastName}`.toLowerCase();
+                return fullName.includes(query);
+            }).slice(0, 5);
+
+            if (matches.length === 0) {
+                dropdown.innerHTML = `<div class="search-row" style="color: #666; cursor: default;">No records match query</div>`;
+                dropdown.style.display = "block";
+                return;
+            }
+
+            matches.forEach(p => {
+                const div = document.createElement('div');
+                div.className = "search-row";
+                div.innerHTML = `
+                    <div>
+                        <span class="player-pos-badge">${p.player.primaryPosition || 'N/A'}</span>
+                        <span class="player-name-search">${p.player.firstName} ${p.player.lastName}</span>
+                    </div>
+                    <span class="team-badge">${p.player.currentTeam?.abbreviation || 'N/A'}</span>
+                `;
+                div.onclick = () => selectPlayer(p);
+                dropdown.appendChild(div);
+            });
+
+            dropdown.style.display = "block";
+        }
+
+        function selectPlayerDirectly(id) {
+            const p = cachedPlayers.find(entry => String(entry.player.id) === String(id));
+            if(p) selectPlayer(p);
+        }
+
+        function findKickerStat(statsObj, targetKeys) {
+            if (!statsObj) return 0;
+            for (let sectionKey in statsObj) {
+                const section = statsObj[sectionKey];
+                if (section && typeof section === 'object') {
+                    for (let statKey in section) {
+                        if (targetKeys.includes(statKey.toLowerCase())) {
+                            return section[statKey];
+                        }
+                    }
+                }
+            }
+            return 0;
+        }
+
+        function selectPlayer(player) {
+            document.getElementById('player-search').value = "";
+            document.getElementById('search-results').style.display = "none";
+
+            const cardSlot = document.getElementById('player-card-slot');
+            const pos = player.player.primaryPosition || "N/A";
+            let statsGridHtml = "";
+
+            const isKicker = (pos === 'K') || !!player.stats?.fieldGoals || !!player.stats?.extraPoints;
+            const isDefensive = ['DE','DT','LB','ILB','OLB','CB','FS','SS','S'].includes(pos) || (!player.stats?.passing && !player.stats?.rushing && player.stats?.tackles);
+            const isLineman = ['OL','OT','OG','C','G','T'].includes(pos);
+
+            if (pos === 'QB') {
+                const passYds = player.stats?.passing?.passYards || 0;
+                const passTD = player.stats?.passing?.passTD || 0;
+                const passPct = player.stats?.passing?.passPct || 0;
+                const passInt = player.stats?.passing?.passInt || 0;
+                const rushYds = player.stats?.rushing?.rushYards || 0;
+                const rushTD = player.stats?.rushing?.rushTD || 0;
+
+                statsGridHtml = `
+                    <div class="stat-mini-box"><span class="sm-label">Pass Yds</span><span class="sm-val">${passYds.toLocaleString()}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Pass TD</span><span class="sm-val">${passTD}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Comp %</span><span class="sm-val">${passPct}%</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">INTs</span><span class="sm-val">${passInt}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Rush Yds</span><span class="sm-val">${rushYds.toLocaleString()}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Rush TD</span><span class="sm-val">${rushTD}</span></div>
+                `;
+            } else if (pos === 'RB') {
+                const rushYds = player.stats?.rushing?.rushYards || 0;
+                const rushTD = player.stats?.rushing?.rushTD || 0;
+                const carries = player.stats?.rushing?.rushAttempts || 0;
+                const receptions = player.stats?.receiving?.receptions || 0;
+                const recYds = player.stats?.receiving?.recYards || 0;
+                const recTD = player.stats?.receiving?.recTD || 0;
+                const ypc = carries > 0 ? (rushYds / carries).toFixed(1) : "0.0";
+
+                statsGridHtml = `
+                    <div class="stat-mini-box"><span class="sm-label">Rush Yds</span><span class="sm-val">${rushYds.toLocaleString()}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Rush TD</span><span class="sm-val">${rushTD}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">YPC</span><span class="sm-val">${ypc}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Catches</span><span class="sm-val">${receptions}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Rec Yds</span><span class="sm-val">${recYds.toLocaleString()}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Rec TD</span><span class="sm-val">${recTD}</span></div>
+                `;
+            } else if (['WR', 'TE'].includes(pos)) {
+                const receptions = player.stats?.receiving?.receptions || 0;
+                const recYds = player.stats?.receiving?.recYards || 0;
+                const recTD = player.stats?.receiving?.recTD || 0;
+                const targets = player.stats?.receiving?.targets || 0;
+                const ypr = receptions > 0 ? (recYds / receptions).toFixed(1) : "0.0";
+
+                statsGridHtml = `
+                    <div class="stat-mini-box"><span class="sm-label">Catches</span><span class="sm-val">${receptions}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Rec Yds</span><span class="sm-val">${recYds.toLocaleString()}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Rec TD</span><span class="sm-val">${recTD}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Targets</span><span class="sm-val">${targets}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">YPR</span><span class="sm-val">${ypr}</span></div>
+                `;
+            } else if (isKicker) {
+                const fgMade = findKickerStat(player.stats, ['fgmade']);
+                const fgAtt = findKickerStat(player.stats, ['fgatt', 'fgattempts']);
+                const fgPct = findKickerStat(player.stats, ['fgpct']);
+                const exPct = findKickerStat(player.stats, ['expct', 'xppct']); 
+                const fg50PlusPct = findKickerStat(player.stats, ['fg50pluspct']);
+
+                statsGridHtml = `
+                    <div class="stat-mini-box"><span class="sm-label">FGs Made</span><span class="sm-val">${fgMade}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Attempts</span><span class="sm-val">${fgAtt}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">FG %</span><span class="sm-val">${fgPct}%</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">EP %</span><span class="sm-val">${exPct}%</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">FG 50+%</span><span class="sm-val">${fg50PlusPct}%</span></div>
+                `;
+            } else if (isLineman) {
+                const gamesPlayed = player.stats?.gamesPlayed || 0;
+                statsGridHtml = `
+                    <div class="stat-mini-box" style="grid-column: span 3;"><span class="sm-label">Games Played</span><span class="sm-val">${gamesPlayed}</span></div>
+                `;
+            } else if (isDefensive) {
+                const tackles = player.stats?.tackles?.tackleTotal || 0;
+                const sacks = player.stats?.tackles?.sacks || 0;
+                const interceptions = player.stats?.interceptions?.interceptions || 0;
+                const forcedFumbles = player.stats?.fumbles?.fumForced || 0;
+                const defTDs = (player.stats?.interceptions?.intTD || 0) + (player.stats?.fumbles?.fumTD || 0);
+
+                statsGridHtml = `
+                    <div class="stat-mini-box"><span class="sm-label">Tackles</span><span class="sm-val">${tackles}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Sacks</span><span class="sm-val">${sacks}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">INTs</span><span class="sm-val">${interceptions}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Forced Fum</span><span class="sm-val">${forcedFumbles}</span></div>
+                    <div class="stat-mini-box"><span class="sm-label">Def TDs</span><span class="sm-val">${defTDs}</span></div>
+                `;
+            } else {
+                const gamesPlayed = player.stats?.gamesPlayed || 0;
+                statsGridHtml = `
+                    <div class="stat-mini-box"><span class="sm-label">Games Played</span><span class="sm-val">${gamesPlayed}</span></div>
+                    <div class="stat-mini-box" style="grid-column: span 2;"><span class="sm-label">Status</span><span class="sm-val">Active</span></div>
+                `;
+            }
+
+            cardSlot.innerHTML = `
+                <div class="player-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>${player.player.firstName.toUpperCase()} ${player.player.lastName.toUpperCase()}</h3>
+                            <span style="font-size: 11px; color: #888; letter-spacing: 1px; text-transform: uppercase;">Position: ${pos}</span>
+                        </div>
+                        <span class="team-badge" style="background: var(--electric-violet);">${player.player.currentTeam?.abbreviation || 'N/A'}</span>
+                    </div>
+                    <div class="stats-card-grid">
+                        ${statsGridHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        window.addEventListener('click', function(e){   
+            const searchInput = document.getElementById('player-search');
+            if (searchInput && !searchInput.contains(e.target)){
+                const dropdown = document.getElementById('search-results');
+                if(dropdown) dropdown.style.display = "none";
+            }
+        });
     </script>
 </body>
 </html>
